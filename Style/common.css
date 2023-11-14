@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center; /* Center all elements */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center; /* Center the h1 element */
+}
+
+h2 {
+    text-align: center; /* Center the h2 element */
+    margin-top: 20px;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+    text-align: left; /* Reset text alignment for form elements */
+    display: inline-block; /* To center the form */
+}
+
+form input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input {
+    width: 95%;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+#addstaffbtn{
+    display: block;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,#addstaffbtn:hover{
+    background-color: #1e7b21;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center; /* Center the table content */
+    margin-left: auto; /* Adjust table position */
+    margin-right: auto; /* Adjust table position */
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center; /* Center the table cell content */
+}
+
+.action{
+    display: flex;
+    justify-content: center;
+}
+
+.action button{
+    margin: 0 5px 0 5px;
+}
+
+.updatebutton{
+    background-color: #4965f1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+    cursor: pointer;
+    width: 50%;
+}
+
+
+.deletebutton{
+    background-color: #f14c49;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+    cursor: pointer;
+    width: 50%;
+}
+.updatebutton:hover,.deletebutton:hover{
+    opacity: 0.9;
+}
+
+#logout{
+    display: block;
+    width: auto;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: red;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 20px auto 20px auto;
+}
+
+#logout:hover{
+background-color: rgb(227, 69, 69);
+}
+
+.updatestaff {
+        text-align: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+.backbutton{
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(101, 99, 99);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    }
+    
+    .backbutton:hover{
+        background-color: rgb(70, 70, 70);
+    }

@@ -1,0 +1,58 @@
+/* Style for the dashboard */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logout{
+    display: block;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: red;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#logout:hover{
+background-color: rgb(227, 69, 69);
+}
+
+.buttons a, .buttons button {
+    display: block;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.buttons a:hover, .buttons button:hover {
+    background-color: #45a049;
+}
+
+
