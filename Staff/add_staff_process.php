@@ -8,20 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $job_title = $_POST["job_title"];
     $salary = $_POST["salary"];
-
-    // Validate data (perform more validation as needed)
-    if (empty($name) || empty($job_title) || empty($salary)) {
-        // Handle validation error (redirect back to the form with an error message, for example)
-        header("Location: staff.php?error=Please fill in all fields");
-        exit();
-    }
+    $user_id= $_POST["id"];
 
     // Insert data into the database
-    $sql = "INSERT INTO staff (name, job_title, salary) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $name, $job_title, $salary);
+    $sql = "INSERT INTO staff (name, job_title, salary, user_id) VALUES ('$name', '$job_title', '$salary', '$user_id')";
 
-    if ($stmt->execute()) {
+    if ($conn->query($sql) === TRUE) {
         // Success: Redirect to staff_details.php with a success message
         header("Location: staff_details.php?success=Staff member added successfully");
         exit();

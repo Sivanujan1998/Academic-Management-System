@@ -7,19 +7,13 @@ include_once("../db_connection.php");
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
-    $name = mysqli_real_escape_string($conn, $_POST["name"]);
-    $address = mysqli_real_escape_string($conn, $_POST["address"]);
-    $hodId = mysqli_real_escape_string($conn, $_POST["hod"]);
-
-    // Validate data (perform more validation as needed)
-    if (empty($name) || empty($address) || empty($hodId)) {
-        // Handle validation error
-        header("Location: department_details.php?error=Please fill in all fields");
-        exit();
-    }
+    $name = $_POST["name"];
+    $address = $_POST["address"];
+    $hodId = $_POST["hod"];
+    $user_id =  $_POST["id"];
 
     // Check if the HOD ID exists in the staff table
-    $hodIdCheck = "SELECT * FROM staff WHERE staff_id = '$hodId'";
+    $hodIdCheck = "SELECT * FROM staff WHERE staff_id = '$hodId' AND user_id='$user_id'";
     $hodIdResult = $conn->query($hodIdCheck);
 
     if ($hodIdResult->num_rows == 0) {
@@ -29,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert data into the department table
-    $sql = "INSERT INTO department (name, address, hod_id) VALUES ('$name', '$address', '$hodId')";
+    $sql = "INSERT INTO department (name, address, hod_id, user_id) VALUES ('$name', '$address', '$hodId','$user_id')";
 
     if ($conn->query($sql) === TRUE) {
         // Success: Redirect to department_details.php with a success message

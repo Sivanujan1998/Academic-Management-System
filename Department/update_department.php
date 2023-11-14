@@ -46,6 +46,7 @@ $departmentData = $result->fetch_assoc();
     <h2>Update Department</h2>
 
     <form action="update_department_process.php" method="post">
+        <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
         <input class="input" type="hidden" name="dept_id" value="<?php echo $deptId; ?>">
 
         <label for="name">Name:</label><br>

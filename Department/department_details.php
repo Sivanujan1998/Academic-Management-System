@@ -18,6 +18,7 @@ if (!isset($_SESSION['id'])) {
 
     <h2>Add New Department</h2>
     <form action="add_department_process.php" method="post">
+    <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
 
@@ -55,9 +56,16 @@ if (!isset($_SESSION['id'])) {
         // Include your database connection file
         include_once("../db_connection.php");
 
-        // Fetch all department records from the database
-        $sql = "SELECT * FROM department";
-        $result = $conn->query($sql);
+            // Fetch all staff records from the database for the current user
+            $user_id = $_SESSION['id'];
+
+            // Using prepared statement to avoid SQL injection
+            $sql = "SELECT * FROM department WHERE user_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $user_id);  // Assuming user_id is an integer, adjust accordingly
+            $stmt->execute();
+
+            $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

@@ -16,9 +16,10 @@ if (!isset($_SESSION['id'])) {
 <body>
     <h1> <?php echo $_SESSION['full_name']; ?>'s Staff Management</h1>
 
-        <div class="addcomponent">
+    <div class="addcomponent">
         <h2>Add New Staff Member</h2>
         <form action="add_staff_process.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br><br>
 
@@ -30,7 +31,7 @@ if (!isset($_SESSION['id'])) {
 
             <input type="submit" id="addstaffbtn" class="addstaff" value="Add Staff">
         </form>
-        </div>
+    </div>
 
 
 
@@ -43,6 +44,7 @@ if (!isset($_SESSION['id'])) {
     } elseif (isset($_GET['error'])) {
         echo '<p style="color: red;">' . $_GET['error'] . '</p>';
     }
+
     ?>
     <table>
         <tr>
@@ -56,9 +58,16 @@ if (!isset($_SESSION['id'])) {
             // Include your database connection file
             include_once("../db_connection.php");
 
-            // Fetch all staff records from the database
-            $sql = "SELECT * FROM staff";
-            $result = $conn->query($sql);
+            // Fetch all staff records from the database for the current user
+            $user_id = $_SESSION['id'];
+
+            // Using prepared statement to avoid SQL injection
+            $sql = "SELECT * FROM staff WHERE user_id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $user_id);  // Assuming user_id is an integer, adjust accordingly
+            $stmt->execute();
+
+            $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {

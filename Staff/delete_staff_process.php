@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $staffId = mysqli_real_escape_string($conn, $_GET['id']);
 
     // Perform the deletion
-    $sql = "DELETE FROM staff WHERE staff_id = '$staffId'";
+    $sql = "DELETE FROM staff WHERE staff_id = '$staffId' AND user_id='$_SESSION['id']'";
     if ($conn->query($sql) === TRUE) {
         // Deletion successful: Redirect to staff_details.php with a success message
         header("Location: staff_details.php?success=Staff member deleted successfully");
