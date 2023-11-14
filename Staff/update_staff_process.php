@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Update data in the database
     $updatesql = "UPDATE staff SET name = '$name', job_title = '$jobTitle', salary = '$salary' WHERE staff_id = '$staffId'";
+    
     if ($conn->query($updatesql) === TRUE) {
         // Success: Redirect to staff_details.php with a success message
         header("Location: staff_details.php?id=$staffId&success=Staff member updated successfully");

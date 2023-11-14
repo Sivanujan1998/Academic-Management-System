@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Include your database connection file
 include_once("../db_connection.php");
 
@@ -6,9 +7,11 @@ include_once("../db_connection.php");
 if (isset($_GET['id'])) {
     // Sanitize the input to prevent SQL injection
     $staffId = mysqli_real_escape_string($conn, $_GET['id']);
+    $user_id= $_SESSION['id'];
 
     // Perform the deletion
-    $sql = "DELETE FROM staff WHERE staff_id = '$staffId' AND user_id='$_SESSION['id']'";
+    $sql = "DELETE FROM staff WHERE staff_id = '$staffId' AND user_id='$user_id'";
+
     if ($conn->query($sql) === TRUE) {
         // Deletion successful: Redirect to staff_details.php with a success message
         header("Location: staff_details.php?success=Staff member deleted successfully");
